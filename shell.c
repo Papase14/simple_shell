@@ -10,14 +10,14 @@ int main(void)
 	char input[MAX_LENGTH]; /*Character array to hold user input*/
 	char *args[MAX_LENGTH]; /*Array to hold arguments*/
 	char *token;            /*Pointer to current token*/
-	int num_args, status, len;  /*Variables to hold number of arguments, status, and string length*/
+	int num_args, status, len;
 	pid_t pid;              /*Process ID variable*/
 
 	while (1)
 	{
 		printf("cisfun$ "); /*Display prompt*/
 
-	       	if (!fgets(input, MAX_LENGTH, stdin)) /*Get input from user*/
+	    if (!fgets(input, MAX_LENGTH, stdin)) /*Get input from user*/
 		{
 			printf("\n");
 			break;
@@ -40,19 +40,19 @@ int main(void)
 				env++;
 			} continue;
 		}
-		
+
 		num_args = 0; /*Initialize number of arguments to 0*/
 		token = strtok(input, " "); /*Get first token from input string*/
 		while (token != NULL)
 		{
-			args[num_args++] = token; /*Add token to argument array and increment number of argument*/
+			args[num_args++] = token;
 			token = strtok(NULL, " ");
 		}
 		args[num_args] = NULL;
 		pid = fork(); /*Create child process*/
 		if (pid == 0)
 		{
-			execvp(args[0], args); /*Execute command with arguments using PATH to search for the command*/
+			execvp(args[0], args); /*Execute command*/
 			printf("Error: Command not found\n");
 			exit(1);
 		}
