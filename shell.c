@@ -1,53 +1,47 @@
 #include "shell.h"
-
 /**
- * main - create a simple shell program.
- * Author: Tshupane Morak & Ntuthuko Zimu
+ * main - create a simple shell program
+ * Authour: Tshupane Morake & Ntuthuko Zimu
  *
- * return: 0.
+ * Return:0.
  */
 int main(void)
 {
-	char input[MAX_LENGTH];
-	char *args[MAX_LENGTH];
-	char *token;
-	int num_args, status, len;
-	pid_t pid;
+	char input[MAX_LENGTH]; /*Character array to hold user input*/
+	char *args[MAX_LENGTH]; /*Array to hold arguments*/
+	char *token;            /*Pointer to current token*/
+	int num_args, status, len;  /*Variables to hold number of arguments, status, and string length*/
+	pid_t pid;              /*Process ID variable*/
 
 	while (1)
 	{
-		printf("cisfun$ ");/*Display prompt*/
+		printf("cisfun$ "); /*Display prompt*/
 
-		/*If user presses Ctrl+D, exit the loop.*/
-		if (!fgets(input, MAX_LENGTH, stdin))
+	       	if (!fgets(input, MAX_LENGTH, stdin)) /*Get input from user*/
 		{
 			printf("\n");
-			break;/*If user presses Ctrl+D, exit the loop.*/
+			break;
 		}
 
-		/*Remove trailing newline*/
 		len = strlen(input);
 		if (input[len - 1] == '\n')
-			input[len - 1] = '\0';
+			input[len - 1] = '\0'; /*Remove trailing newline*/
 
-		/*If user enters the "exit" command, break the loop.*/
 		if (strcmp(input, "exit") == 0)
-			break;
-
-		num_args = 0;
-		/*tokenizes the input string and save it*/
-		token = strtok(input, " ");
+			break; /*if user enters "exit" break out of loop*/
+		
+		num_args = 0; /*Initialize number of arguments to 0*/
+		token = strtok(input, " "); /*Get first token from input string*/
 		while (token != NULL)
 		{
-			args[num_args++] = token;
+			args[num_args++] = token; /*Add token to argument array and increment number of argument*/
 			token = strtok(NULL, " ");
-		} args[num_args] = NULL;
-
-		/*Execute the command*/
-		pid = fork();
+		}
+		args[num_args] = NULL;
+		pid = fork(); /*Create child process*/
 		if (pid == 0)
-		{/*Child process*/
-			execve(args[0], args, NULL);
+		{
+			execvp(args[0], args); /*Execute command with arguments using PATH to search for the command*/
 			printf("Error: Command not found\n");
 			exit(1);
 		}
@@ -56,9 +50,9 @@ int main(void)
 			printf("Fork failed\n");
 			exit(1);
 		}
-		else
-		{/* Parent process*/
-			waitpid(pid, &status, 0);
+		else /*If parent process*/
+		{
+			waitpid(pid, &status, 0); /*Wait for child process to terminate*/
 		}
 	} return 0;
 }
