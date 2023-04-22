@@ -4,7 +4,7 @@
 /* Headers required for the program */
 #include <stdio.h>      /*Standard Input/Output library*/
 #include <string.h>     /*String manipulation functions*/
-#include <stdlib.h>     /*General purpose functions, including memory allocation*/
+#include <stdlib.h>     /*General purpose functions*/
 #include <unistd.h>     /*Unix standard functions*/
 #include <sys/types.h>  /*Data types used in system calls*/
 #include <sys/wait.h>   /*Wait for process termination function*/
