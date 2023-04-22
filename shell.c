@@ -17,7 +17,7 @@ int main(void)
 	{
 		printf("cisfun$ "); /*Display prompt*/
 
-	    if (!fgets(input, MAX_LENGTH, stdin)) /*Get input from user*/
+		if (!fgets(input, MAX_LENGTH, stdin)) /*Get input from user*/
 		{
 			printf("\n");
 			break;
