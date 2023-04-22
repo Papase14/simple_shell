@@ -11,7 +11,7 @@
 
 #define MAX_LENGTH 1024 /*Maximum length of input string*/
 
-/* Environmental variables */
+/*Environmental variables*/
 extern char **environ;
 
 /*Prototypes*/

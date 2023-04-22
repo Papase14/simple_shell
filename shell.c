@@ -29,9 +29,9 @@ int main(void)
 
 		if (strcmp(input, "exit") == 0)
 			break; /*if user enters "exit" break out of loop*/
-		else if (strcmp(input, "env") == 0) /* check if user entered "env" command */
+		else if (strcmp(input, "env") == 0) /*check if user entered "env" command*/
 		{
-			/* print the current environment variables */
+			/*print the current environment variables*/
 			char **env = environ;
 
 			while (*env != NULL)
