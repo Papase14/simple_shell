@@ -47,7 +47,7 @@ int main(void)
 		while (token != NULL)
 		{
 			args[num_args++] = token;
-			token = *_strtok(NULL, " ");
+			token = _strtok(NULL, " ");
 		} args[num_args] = NULL;
 
 		pid = fork(); /*Create child process*/
