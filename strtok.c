@@ -29,7 +29,7 @@ char *_strtok(char **string, char *delimiter)
     }
     
     tok = malloc(tokenLength + 1);
-    memcpy(tok, string, tokenLength);
+    memcpy(tok, _string, tokenLength);
     tok[tokenLength] = '\0';
 
     *string = delimiterFound ? delimiterFound + strlen(delimiter) : (char*)0;
