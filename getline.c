@@ -9,7 +9,7 @@
  */
 char *get_line(FILE *stream)
 {
-	static ssize_t buffersize = 120; /* Minimum size for a line buffer*/
+	static size_t buffersize = 120; /* Minimum size for a line buffer*/
 	size_t this_char = 0;
 	char *next_linebuffer;
 	char *line = malloc(buffersize);
