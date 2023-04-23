@@ -1,13 +1,13 @@
 #include "shell.h"
 /**
- * strtok - splits a string based on delimiter given
+ * _str_tok - splits a string based on delimiter given
  * @string: string it takes in
  * @delimiter: specifies set of bytes that delimit the parsed string
  * Authour: Tshupane Morake & Ntuthuko Zimu
  *
  * Return: token
  */
-char *_strtok(char** string, const char* delimiters)
+char *_str_tok(char** string, const char* delimiters)
 {
     char* str = *string;
     char* tok_start;
