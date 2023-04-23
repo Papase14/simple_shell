@@ -43,7 +43,7 @@ int main(void)
 		}
 
 		num_args = 0; /*Initialize number of arguments to 0*/
-		token = _str_tok(*input, " "); /*Get first token from input string*/
+		token = _str_tok(&input, " "); /*Get first token from input string*/
 		while (token != NULL)
 		{
 			args[num_args++] = token;
