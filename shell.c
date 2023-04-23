@@ -10,9 +10,8 @@ int main(void)
 	char *input; /*Character array to hold user input*/
 	char *args[MAX_LENGTH]; /*Array to hold arguments*/
 	char *token;            /*Pointer to current token*/
-	int num_args, status, len;
-	/*char *p = NULL;*/
 	pid_t pid;              /*Process ID variable*/
+	int num_args, status, len;
 
 	while (1)
 	{
@@ -35,7 +34,6 @@ int main(void)
 		{
 			/*print the current environment variables*/
 			char **env = environ;
-
 			while (*env != NULL)
 			{
 				printf("%s\n", *env);
@@ -50,16 +48,15 @@ int main(void)
 		{
 			args[num_args++] = token;
 			token = strtok(NULL, " ");
-		}
-		args[num_args] = NULL;
+		} args[num_args] = NULL;
+
 		pid = fork(); /*Create child process*/
 		if (pid == 0)
 		{
 			execvp(args[0], args); /*Execute command*/
 			printf("Error: Command not found\n");
 			exit(1);
-		}
-		else if (pid < 0)
+		} else if (pid < 0)
 		{
 			printf("Fork failed\n");
 			exit(1);
