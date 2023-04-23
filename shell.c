@@ -65,5 +65,17 @@ int main(void)
 		{
 			waitpid(pid, &status, 0); /*Wait for child process to terminate*/
 		}
-	} return 0;
+	} 
+	// For getting the line of code
+	
+	char *p = NULL;
+
+        while ((p = getline(stdin)) && *p)
+        {
+		puts(p);
+		free(p):
+	}
+	
+        free(p);
+        return 0;
 }
