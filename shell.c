@@ -43,11 +43,11 @@ int main(void)
 		}
 
 		num_args = 0; /*Initialize number of arguments to 0*/
-		token = my_strtok(&input, " "); /*Get first token from input string*/
+		token = strtok(input, " "); /*Get first token from input string*/
 		while (token != NULL)
 		{
 			args[num_args++] = token;
-			token = my_strtok(NULL, " ");
+			token = strtok(NULL, " ");
 		} args[num_args] = NULL;
 
 		pid = fork(); /*Create child process*/

@@ -7,30 +7,32 @@
  *
  * Return: token
  */
-char *my_strtok(char* _strin, const char* delim)
+char *_strtok(char **string, char *delimiter)
 {
-    char* str = *_strin;
-    char* tok_start;
+    char *_string = *string;
+    char *delimiterFound = (char*)0; /*Type casting*/
+    int tokenLength = 0;
+    char *tok = (char*)0;
 
-    if (!str)
-        return NULL;
+    if(!_string)
+        return ((char*)0);
 
-    /*skip leading delimiters*/
-    while (*str && strchr(delim, *str))
-        ++str;
+    delimiterFound = strstr(_string, delimiter);
 
-    if (!*str)
-        return NULL;
+    if (delimiterFound)
+    {
+        tokenLength = delimiterFound - _string;
+    }
+    else
+    {
+        tokenLength = strlen(_string);
+    }
+    
+    tok = malloc(tokenLength + 1);
+    memcpy(tok, string, tokenLength);
+    tok[tokenLength] = '\0';
 
-    /*find end of token*/
-    tok_start = str;
-    while (*str && !strchr(delim, *str))
-        ++str;
+    *string = delimiterFound ? delimiterFound + strlen(delimiter) : (char*)0;
 
-    /*replace delimiter with null terminator*/
-    if (*str)
-        *str++ = '\0';
-
-    *_strin = str;
-    return tok_start;
+    return (tok);
 }
