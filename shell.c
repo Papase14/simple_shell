@@ -73,7 +73,7 @@ int main(void)
         while ((p = getline(stdin)) && *p)
         {
 		puts(p);
-		free(p):
+		free(p);
 	}
 	
         free(p);
