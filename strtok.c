@@ -7,7 +7,7 @@
  *
  * Return: token
  */
-char *strtok(char **string, char *delimiter)
+char *_strtok(char **string, char *delimiter)
 {
     char *_string = *string;
     char *delimiterFound = (char*)0; /*Type casting*/
