@@ -9,7 +9,7 @@
  */
 char *_strtok(char *string, char *delimiter)
 {
-    char *_string = *string;
+    char *_string = string;
     char *delimiterFound = (char*)0; /*Type casting*/
     int tokenLength = 0;
     char *tok = (char*)0;
@@ -32,7 +32,7 @@ char *_strtok(char *string, char *delimiter)
     memcpy(tok, string, tokenLength);
     tok[tokenLength] = '\0';
 
-    *string = delimiterFound ? delimiterFound + strlen(delimiter) : (char*)0;
+    string = delimiterFound ? delimiterFound + strlen(delimiter) : (char*)0;
 
     return (tok);
 }
