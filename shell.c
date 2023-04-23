@@ -38,8 +38,7 @@ int main(void)
 			{
 				printf("%s\n", *env);
 				env++;
-			} free(input);
-			continue;
+			} continue;
 		}
 
 		num_args = 0; /*Initialize number of arguments to 0*/
@@ -72,7 +71,10 @@ int main(void)
 		{
 			waitpid(pid, &status, 0); /*Wait for child process to terminate*/
 		}
-		free(input);
+		if (input != NULL)/*Check if there is memory to free*/
+		{
+			free(input);
+		}
 	}
 	return 0;
 }
