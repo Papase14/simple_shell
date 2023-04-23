@@ -7,16 +7,16 @@
  *
  * Return: token
  */
-char *my_strtok(char** string, const char* delimiters)
+char *my_strtok(char* _strin, const char* delim)
 {
-    char* str = *string;
+    char* str = *_strin;
     char* tok_start;
 
     if (!str)
         return NULL;
 
     /*skip leading delimiters*/
-    while (*str && strchr(delimiters, *str))
+    while (*str && strchr(delim, *str))
         ++str;
 
     if (!*str)
@@ -24,13 +24,13 @@ char *my_strtok(char** string, const char* delimiters)
 
     /*find end of token*/
     tok_start = str;
-    while (*str && !strchr(delimiters, *str))
+    while (*str && !strchr(delim, *str))
         ++str;
 
     /*replace delimiter with null terminator*/
     if (*str)
         *str++ = '\0';
 
-    *string = str;
+    *_strin = str;
     return tok_start;
 }
