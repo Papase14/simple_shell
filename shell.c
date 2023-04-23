@@ -11,6 +11,7 @@ int main(void)
 	char *args[MAX_LENGTH]; /*Array to hold arguments*/
 	char *token;            /*Pointer to current token*/
 	int num_args, status, len;
+	char *p = NULL;
 	pid_t pid;              /*Process ID variable*/
 
 	while (1)
@@ -66,16 +67,11 @@ int main(void)
 			waitpid(pid, &status, 0); /*Wait for child process to terminate*/
 		}
 	} 
-	// For getting the line of code
-	
-	char *p = NULL;
-
-        while ((p = getline(stdin)) && *p)
-        {
+	/*For getting the line of code*/
+	while ((p = get_line(stdin)) && *p)
+    {
 		puts(p);
 		free(p);
-	}
-	
-        free(p);
-        return 0;
+	} free(p);
+	return 0;
 }

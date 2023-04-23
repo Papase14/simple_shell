@@ -15,7 +15,7 @@
 extern char **environ;
 
 /*Prototypes*/
-char *getline(FILE *stream);
+char *get_line(FILE *stream);
 
 
 #endif
