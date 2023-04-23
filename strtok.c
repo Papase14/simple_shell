@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * _str_tok - splits a string based on delimiter given
+ * _strtok - splits a string based on delimiter given
  * @string: string it takes in
  * @delimiter: specifies set of bytes that delimit the parsed string
  * Authour: Tshupane Morake & Ntuthuko Zimu
@@ -9,31 +9,30 @@
  */
 char *_strtok(char *string, const char *delimiter)
 {
-    static char *lastString = NULL;
-    char *tok = NULL;
+    static char *last_String = NULL;
+    char *_token = NULL;
 
-    if (string == NULL && lastString == NULL) {
+    if (string == NULL && last_String == NULL) {
         return NULL;
     }
 
     if (string == NULL) {
-        string = lastString;
+        string = last_String;
     }
 
-    tok = string + strspn(string, delimiter);
+    _token = string + strspn(string, delimiter);
 
     /*if reachs the end of the string, return NULL*/
-    if (*tok == '\0') {
-        lastString = NULL;
+    if (*_token == '\0') {
+        last_String = NULL;
         return NULL;
     }
 
-    lastString = tok + strcspn(tok, delimiter);
+    last_String = _token + strcspn(_token, delimiter);
 
-    if (*lastString != '\0') {
-        *lastString++ = '\0';
+    if (*last_String != '\0') {
+        *last_String++ = '\0';
     }
 
-    return tok;
+    return _token;
 }
-
