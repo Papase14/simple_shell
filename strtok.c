@@ -7,43 +7,33 @@
  *
  * Return: token
  */
-char *_strtok(char **string, const char *delimiter)
+char *_strtok(char *string, const char *delimiter)
 {
-    char *start;
-    char *tok;
-    
-    if (*string == NULL) {
+    static char *last_String = NULL;
+    char *_token = NULL;
+
+    if (string == NULL && last_String == NULL) {
         return NULL;
     }
-    
-    /*Find the start of the next token*/
-    start = *string;
-    while (*start && strchr(delimiter, *start)) {
-        start++;
+
+    if (string == NULL) {
+        string = last_String;
     }
-    
-    if (!*start) {
-        /*No more tokens*/
-        *string = NULL;
+
+    _token = string + strspn(string, delimiter);
+
+    /*if reachs the end of the string, return NULL*/
+    if (*_token == '\0') {
+        last_String = NULL;
         return NULL;
     }
-    
-    /*Find the end of the current token*/
-    tok = start;
-    while (*tok && !strchr(delimiter, *tok)) {
-        tok++;
+
+    last_String = _token + strcspn(_token, delimiter);
+
+    if (*last_String != '\0') {
+        *last_String++ = '\0';
     }
-    
-    if (*tok) {
-        /*Terminate the current token*/
-        *tok = '\0';
-        /*Set the pointer to the next token*/
-        *string = tok + 1;
-    } else {
-        /*No more tokens*/
-        *string = NULL;
-    }
-    
-    return start;
+
+    return _token;
 }
 
