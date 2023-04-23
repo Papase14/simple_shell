@@ -15,8 +15,8 @@
 extern char **environ;
 
 /*Prototypes*/
-char* get_line(FILE *stream);
-char* _strtok(char **string, char *delimiter);
+char *get_line(FILE *stream);
+char *_strtok(char **string, char *delimiter);
 
 
 #endif
