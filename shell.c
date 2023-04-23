@@ -11,7 +11,7 @@ int main(void)
 	char *args[MAX_LENGTH]; /*Array to hold arguments*/
 	char *token;            /*Pointer to current token*/
 	int num_args, status, len;
-	char *p = NULL;
+	/*char *p = NULL;*/
 	pid_t pid;              /*Process ID variable*/
 
 	while (1)
@@ -24,11 +24,6 @@ int main(void)
 			printf("\n");
 			break;
 		}
-		/*if (!fgets(input, MAX_LENGTH, stdin)) /*Get input from user
-		{
-			printf("\n");
-			break;
-		}*/
 
 		len = strlen(input);
 		if (input[len - 1] == '\n')
@@ -75,11 +70,5 @@ int main(void)
 		}
 		free(input);
 	}
-	/*For getting the line of code
-	while ((p = get_line(stdin)) && *p)
-    {
-		puts(p);
-		free(p);
-	} free(p);*/
 	return 0;
 }
