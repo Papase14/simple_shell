@@ -3,7 +3,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <sys/wait.h>
 /**
  * getline - Reads input from stream
  * @Stream: stream to read from
@@ -13,8 +12,8 @@
  */
 char *getline(FILE *stream)
 {
-	static ssize_t *buffersize = 120; /* Minimum size for a line buffer*/
-	size_t this_char char = 0;
+	static ssize_t buffersize = 120; /* Minimum size for a line buffer*/
+	size_t this_char = 0;
 
 	if (stream == NULL)
 		return NULL;
@@ -28,7 +27,7 @@ char *getline(FILE *stream)
 
 	do
 	{
-		c = fgetc(stream)
+		c = fgetc(stream);
 
 			if (this_char + 1 >= buffersize)
 			{
