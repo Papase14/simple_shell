@@ -7,7 +7,7 @@
  */
 int main(void)
 {
-	char input[MAX_LENGTH]; /*Character array to hold user input*/
+	char *input; /*Character array to hold user input*/
 	char *args[MAX_LENGTH]; /*Array to hold arguments*/
 	char *token;            /*Pointer to current token*/
 	int num_args, status, len;
@@ -18,11 +18,17 @@ int main(void)
 	{
 		printf("cisfun$ "); /*Display prompt*/
 
-		if (!fgets(input, MAX_LENGTH, stdin)) /*Get input from user*/
+		input = get_line(stdin); /*Get input from user*/
+		if (!input)
 		{
 			printf("\n");
 			break;
 		}
+		/*if (!fgets(input, MAX_LENGTH, stdin)) /*Get input from user
+		{
+			printf("\n");
+			break;
+		}*/
 
 		len = strlen(input);
 		if (input[len - 1] == '\n')
@@ -39,7 +45,8 @@ int main(void)
 			{
 				printf("%s\n", *env);
 				env++;
-			} continue;
+			} free(input);
+			continue;
 		}
 
 		num_args = 0; /*Initialize number of arguments to 0*/
@@ -66,12 +73,13 @@ int main(void)
 		{
 			waitpid(pid, &status, 0); /*Wait for child process to terminate*/
 		}
-	} 
-	/*For getting the line of code*/
+		free(input);
+	}
+	/*For getting the line of code
 	while ((p = get_line(stdin)) && *p)
     {
 		puts(p);
 		free(p);
-	} free(p);
+	} free(p);*/
 	return 0;
 }
