@@ -1,8 +1,5 @@
 #include "shell.h"
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
+
 /**
  * getline - Reads input from stream
  * @Stream: stream to read from
@@ -50,9 +47,9 @@ char *getline(FILE *stream)
 		}
 		
 		line[this_char++] = c;
-	}
-	while (c);
-	
+	} while (c);
+
+	line[this_char - 1] = '\0';
 	return (line);
 
 }
