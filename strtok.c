@@ -7,7 +7,7 @@
  *
  * Return: token
  */
-char* my_strtok(char** string, const char* delimiters)
+char *my_strtok(char** string, const char* delimiters)
 {
     char* str = *string;
     char* tok_start;
