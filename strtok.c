@@ -9,50 +9,41 @@
  */
 char *_strtok(char **string, const char *delimiter)
 {
-    static char *lastToken = NULL;  /* State variable */
-    char *delimiterFound = NULL;
-    int tokenLength = 0;
-    char *tok = NULL;
-    char *start = NULL;
-
-    if (string == NULL || *string == NULL) {
-        start = lastToken;
-    } else {
-        start = *string;
-    }
-
-    /*Find the next delimiter*/
-    delimiterFound = strstr(start, delimiter);
-
-    /*Calculate the length of the token*/
-    if (delimiterFound) {
-        tokenLength = delimiterFound - start;
-    } else {
-        tokenLength = strlen(start);
-    }
-
-    /*Allocate memory for the token*/
-    tok = malloc(tokenLength + 1);
-    if (tok == NULL) {
+    char *start;
+    char *tok;
+    
+    if (*string == NULL) {
         return NULL;
     }
-
-    /*Copy the token*/
-    memcpy(tok, start, tokenLength);
-    tok[tokenLength] = '\0';
-
-    /*Update the state*/
-    if (delimiterFound) {
-        lastToken = delimiterFound + strlen(delimiter);
+    
+    /*Find the start of the next token*/
+    start = *string;
+    while (*start && strchr(delimiter, *start)) {
+        start++;
+    }
+    
+    if (!*start) {
+        /*No more tokens*/
+        *string = NULL;
+        return NULL;
+    }
+    
+    /*Find the end of the current token*/
+    tok = start;
+    while (*tok && !strchr(delimiter, *tok)) {
+        tok++;
+    }
+    
+    if (*tok) {
+        /*Terminate the current token*/
+        *tok = '\0';
+        /*Set the pointer to the next token*/
+        *string = tok + 1;
     } else {
-        lastToken = start + tokenLength;
+        /*No more tokens*/
+        *string = NULL;
     }
-
-    /*Update the output parameter*/
-    if (string != NULL) {
-        *string = lastToken;
-    }
-
-    /*Return the token*/
-    return tok;
+    
+    return start;
 }
+
