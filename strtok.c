@@ -1,38 +1,36 @@
 #include "shell.h"
 /**
- * strtok - splits a string based on delimiter given
+ * _strtok - splits a string based on delimiter given
  * @string: string it takes in
  * @delimiter: specifies set of bytes that delimit the parsed string
  * Authour: Tshupane Morake & Ntuthuko Zimu
  *
  * Return: token
  */
-char *_strtok(char **string, char *delimiter)
+char *_strtok(char *string, const char *delimiter)
 {
-    char *_string = *string;
-    char *delimiterFound = (char*)0; /*Type casting*/
-    int tokenLength = 0;
-    char *tok = (char*)0;
+	static char *last_String = NULL;
+	char *_token = NULL;
+	
+	if (string == NULL && last_String == NULL)
+		return NULL;
+	
+	if (string == NULL)
+		string = last_String;
 
-    if(!_string)
-        return ((char*)0);
+	_token = string + strspn(string, delimiter);
 
-    delimiterFound = strstr(_string, delimiter);
+	/* If reaches the end of the string, return NULL */
+	if (*_token == '\0')
+	{
+		last_String = NULL;
+		return NULL;
+	}
 
-    if (delimiterFound)
-    {
-        tokenLength = delimiterFound - _string;
-    }
-    else
-    {
-        tokenLength = strlen(_string);
-    }
-    
-    tok = malloc(tokenLength + 1);
-    memcpy(tok, string, tokenLength);
-    tok[tokenLength] = '\0';
+	last_String = _token + strcspn(_token, delimiter);
 
-    *string = delimiterFound ? delimiterFound + strlen(delimiter) : (char*)0;
+	if (*last_String != '\0')
+		*last_String++ = '\0';
 
-    return (tok);
+	return _token;
 }
