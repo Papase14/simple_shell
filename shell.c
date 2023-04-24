@@ -31,7 +31,7 @@ int main(void)
 		if (strncmp(input, "exit ", 5) == 0)
 		{
     		int exit_status = atoi(input + 5);
-    		exit(exit_status);
+    		exit(exit_status);  /*if user enters "exit 98", exits the loop with 98 status*/
 		}
 		else if (strcmp(input, "exit") == 0)
 		{
