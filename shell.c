@@ -7,7 +7,7 @@
 */
 int main(void)
 {
-	char *input[MAX_LENGTH]; /*Character array to hold user input*/
+	char *input; /*Character array to hold user input*/
 	char *args[MAX_LENGTH]; /*Array to hold arguments*/
 	char *token;            /*Pointer to current token*/
 	pid_t pid;              /*Process ID variable*/
