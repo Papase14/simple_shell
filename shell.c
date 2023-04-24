@@ -31,19 +31,15 @@ int main(void)
 		if (strcmp(input, "exit") == 0)
 		{
 			/*if user enters "exit" command with an argument*/
-			if (num_args == 2)
+			char *status_str = strtok(NULL, " "); /* Get status argument */
+			if (status_str == NULL)
 			{
-				status = atoi(args[1]); /*convert the argument to an integer*/
-				exit(status); /*exit the shell with the provided exit status*/
-			}
-			else if (num_args > 2)
-			{
-				/*if there are too many arguments, print an error message*/
-				printf("Error: too many arguments\n");
+				exit(0); /* Exit with status 0 */
 			}
 			else
 			{
-				break; /*if no argument is provided, break out of the loop*/
+				int status = atoi(status_str); /* Convert status argument to integer */
+				exit(status); /* Exit with specified status */
 			}
 		}
 		else if (strcmp(input, "env") == 0) /*check if user entered "env" command*/
