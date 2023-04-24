@@ -11,7 +11,6 @@ int main(void)
 	char *args[MAX_LENGTH]; /*Array to hold arguments*/
 	char *token;            /*Pointer to current token*/
 	pid_t pid;              /*Process ID variable*/
-	char *status_str;
 	int num_args, status, len;
 
 	while (1)
