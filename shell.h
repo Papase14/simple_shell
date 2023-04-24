@@ -18,6 +18,12 @@ extern char **environ;
 char *get_line(FILE *stream);
 char *_strtok(char *string,const char *delimiter);
 
+/*builtin functions */
+void printenv(void);
+int _setenv(const char *name, const char *value, int overwrite);
+int _unsetenv(const char *name);
+int _enviromentLoc(conts char *name);
+char *get_env(const char *name);
 
 #endif
 
