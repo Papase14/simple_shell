@@ -31,16 +31,7 @@ int main(void)
 
 		if (strcmp(input, "exit") == 0)
 		{
-			status_str = _strtok(NULL, " "); /*Get status argument*/
-			if (status_str == NULL)
-			{
-				exit(0); /*Exit with status 0*/
-			}
-			else
-			{
-				status = atoi(status_str); /*Convert status argument to integer*/
-				exit(status); /*Exit with specified status*/
-			}
+			break; /*if user enters "exit" break out of loop*/
 		}
 		else if (strcmp(input, "env") == 0) /*check if user entered "env" command*/
 		{
