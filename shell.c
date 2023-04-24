@@ -4,7 +4,7 @@
  * Authour: Tshupane Morake & Ntuthuko Zimu
  *
  * Return:0.
- */
+*/
 int main(void)
 {
 	char *input; /*Character array to hold user input*/
@@ -28,8 +28,15 @@ int main(void)
 		if (input[len - 1] == '\n')
 			input[len - 1] = '\0'; /*Remove trailing newline*/
 
-		if (strcmp(input, "exit") == 0)
-			break; /*if user enters "exit" break out of loop*/
+		if (strncmp(input, "exit ", 5) == 0)
+		{
+    		int exit_status = atoi(input + 5);
+    		exit(exit_status);  /*if user enters "exit 98", exits the loop with 98 status*/
+		}
+		else if (strcmp(input, "exit") == 0)
+		{
+    		break; /*if user enters "exit" break out of loop*/
+		}
 		else if (strcmp(input, "env") == 0) /*check if user entered "env" command*/
 		{
 			/*print the current environment variables*/
@@ -67,5 +74,23 @@ int main(void)
 		}
 		free(input);
 	}
+
 	return 0;
+}
+
+/**
+ * free_array - frees array of strings
+ * @array: pointer to 2D array of strings
+ */
+void free_array(char **array)
+{
+	int i = 0;
+
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+
+	free(array);
 }
