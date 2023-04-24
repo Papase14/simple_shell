@@ -11,6 +11,7 @@ int main(void)
 	char *args[MAX_LENGTH]; /*Array to hold arguments*/
 	char *token;            /*Pointer to current token*/
 	pid_t pid;              /*Process ID variable*/
+	char *status_str;
 	int num_args, status, len;
 
 	while (1)
@@ -29,7 +30,18 @@ int main(void)
 			input[len - 1] = '\0'; /*Remove trailing newline*/
 
 		if (strcmp(input, "exit") == 0)
-			break; /*if user enters "exit" break out of loop*/
+		{
+			status_str = _strtok(NULL, " "); /* Get status argument */
+			if (status_str == NULL)
+			{
+				exit(0); /* Exit with status 0 */
+			}
+			else
+			{
+				status = atoi(status_str); /* Convert status argument to integer */
+				exit(status); /* Exit with specified status */
+			}
+		}
 		else if (strcmp(input, "env") == 0) /*check if user entered "env" command*/
 		{
 			/*print the current environment variables*/
