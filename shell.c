@@ -28,19 +28,14 @@ int main(void)
 		if (input[len - 1] == '\n')
 			input[len - 1] = '\0'; /*Remove trailing newline*/
 
-		if (strcmp(input, "exit") == 0)
+		if (strncmp(input, "exit ", 5) == 0)
 		{
-			/*if user enters "exit" command with an argument*/
-			char *status_str = strtok(NULL, " "); /* Get status argument */
-			if (status_str == NULL)
-			{
-				exit(0); /* Exit with status 0 */
-			}
-			else
-			{
-				int status = atoi(status_str); /* Convert status argument to integer */
-				exit(status); /* Exit with specified status */
-			}
+    		int exit_status = atoi(input + 5);
+    		exit(exit_status);
+		}
+		else if (strcmp(input, "exit") == 0)
+		{
+    		break; /*if user enters "exit" break out of loop*/
 		}
 		else if (strcmp(input, "env") == 0) /*check if user entered "env" command*/
 		{
