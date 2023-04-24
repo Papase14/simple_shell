@@ -30,7 +30,21 @@ int main(void)
 
 		if (strcmp(input, "exit") == 0)
 		{
-			break; /*if user enters "exit" break out of loop*/
+			/*if user enters "exit" command with an argument*/
+			if (num_args == 2)
+			{
+				status = atoi(args[1]); /*convert the argument to an integer*/
+				exit(status); /*exit the shell with the provided exit status*/
+			}
+			else if (num_args > 2)
+			{
+				/*if there are too many arguments, print an error message*/
+				printf("Error: too many arguments\n");
+			}
+			else
+			{
+				break; /*if no argument is provided, break out of the loop*/
+			}
 		}
 		else if (strcmp(input, "env") == 0) /*check if user entered "env" command*/
 		{

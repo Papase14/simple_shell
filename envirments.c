@@ -3,68 +3,68 @@
  * printenv - displays existing enviroment
  *
  * Author: Tshupane Morake & Ntuthuko Zimu
- */
+ 
 void printenv(void)
 {
 	unsigned int index = 0;
 	
 	for (index ; environ[index]; index++)
 	{
-		puts(environ[index];
+		puts(environ[index]);
 		printf("\n");
 	}
 
-}
+}*/
 /**
  * get_env - get enviroment variable
  * @name: name to search in the environment
  *
  * return: Pointer for the enviroment value, NULL if the is no match
- */
+ 
 char *get_env(const char *name)
 {
 	unsigned int index = 0;
-	int difference
+	int difference;
 	int variable_length = strlen(name);
 
 	for (index; environ[index]; index++)
 	{
-		diff = strncmp(environ[index], name, variable_length;
+		difference = strncmp(environ[index], name, variable_length);
 		if (difference == 0)
-			return (environ[i] + variable_length);	
+			return (environ[index] + variable_length);	
 	}
 	
 	return (NULL);
-}
+}*/
 /**
  * enviromentLoc - locates variable in the environment
  * @name: name to be located in the environment
  *
  * Return: location in environment on success or -1 on error
- */
-int _enviromentLoc(conts char *name)
+ 
+int _enviromentLoc(const char *name)
 {
 	unsigned int index = 0;
-        int difference
+        int difference;
         int variable_length = strlen(name);
 
         for (index; environ[index]; index++)
         {
-                diff = strncmp(environ[index], name, variable_length;
+                difference = strncmp(environ[index], name, variable_length);
                 if (difference == 0)
                         return (index);
         }
 
         return (-1);
 
-}
+}*/
 /**
  * _setenv - changes or adds environment variable
  * @name: name of variable added or changed
  * @overwrite: previous value of newly set variable
  *
  * Return: 0 on success -1 on error
- */
+ 
 int _setenv(const char *name, const char *value, int overwrite)
 {
 	char *namecopy = strdup(name), *valuecopy = strdup(value);
@@ -106,13 +106,13 @@ int _setenv(const char *name, const char *value, int overwrite)
 	environ = new_environ;
 
 	return (0);
-}
+}*/
 /**
  * _unsetenv - deletes the variable name from the environment
  * @name: name of variable to be deleted
  *
  * Return: 0 on success, -1 on error
- */
+ 
 int _unsetenv(const char *name)
 {
 	int location = _enviromentLoc(name);
@@ -145,4 +145,4 @@ int _unsetenv(const char *name)
 	}
 	
 	return (0);
-}
+}*/
