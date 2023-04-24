@@ -7,64 +7,30 @@
  *
  * Return: token
  */
-unisigned int is_delimiter(char c, char *delimiter)
+char *_strtok(char *string, const char *delimiter)
 {
-	while (*delimiter != '\0')
-	{
-		if (c == *delimiter)
-			return 1;
+	static char *last_String = NULL;
+	char *_token = NULL;
+	
+	if (string == NULL && last_String == NULL)
+		return NULL;
+	
+	if (string == NULL)
+		string = last_String;
 
-		delimiter++;
-	}
-	
-	return 0;
-}
-char *_strtok(char *string, char *delimiter)
-{
-	static char *backup_string; // start of the next search
-	
-	if (!string)
-		string = backup_string;
+	_token = string + strspn(string, delimiter);
 
-	if(!string)
-		return NULL; //bad user
-	
-	//handle beginning of the sting containing delims
-	
-	while (1)
+	/* If reaches the end of the string, return NULL */
+	if (*_token == '\0')
 	{
-		if (is_delimiter(string, delimiter))
-		{
-			string++;
-			continue;
-		}
-		
-		if (string == '\0')
-		{
-			//we've reached the end if the string
-			return NULL;
-		}
-		break;
+		last_String = NULL;
+		return NULL;
 	}
 
-	char *ret = string;
+	last_String = _token + strcspn(_token, delimiter);
 
-	while (1)
-	{
-		if (string == '\0')
-		{
-			/*end of the input strinf and next exec will return NULL*/
-			backup_string = string;
-			return ret;
-		}
-		
-		if (is_delimiter(*string, delimiter))
-		{
-			*string = '\0';
-			backup_string = string + 1;
-			return ret;
-		}
-		
-		string++;
-	}
+	if (*last_String != '\0')
+		*last_String++ = '\0';
+
+	return _token;
 }
