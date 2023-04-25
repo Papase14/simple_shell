@@ -29,6 +29,8 @@ void print_environment_variables(void);
 void change_directory(char *input);
 int _strcmp(char *s1, char *s2);
 int _strncmp(const char *s1, const char *s2, int n);
+unsigned int _strspn(char *s, char *accept);
+int _strcspn(char *s, const char *delim);
 
 /* builtin functions */
 void printenv(void);
@@ -36,8 +38,6 @@ int _setenv(const char *name, const char *value, int overwrite);
 int _unsetenv(const char *name);
 int _enviromentLoc(const char *name);
 char *get_env(const char *name);
-
-
 
 #endif
 
