@@ -64,4 +64,5 @@ void change_directory(char *input)
 	{
 		setenv("PWD", cwd, 1);
 	}
+    setenv("OLDPWD", getenv("PWD"), 1);
 }
