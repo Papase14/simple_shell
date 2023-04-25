@@ -22,14 +22,14 @@ char *_strtok(char *string, const char *delimiter)
 		string = last_String;
 	}
 
-	_token = string + strspn(string, delimiter);
+	_token = string + _strspn(string, delimiter);
 	if (*_token == '\0')
 	{
 		last_String = NULL;
 		return (NULL);
 	}
 
-	last_String = _token + strcspn(_token, delimiter);
+	last_String = _token + _strcspn(_token, delimiter);
 	if (*last_String != '\0')
 	{
 		*last_String++ = '\0';
