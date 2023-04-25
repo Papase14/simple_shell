@@ -41,33 +41,6 @@ void change_directory(char *input)
 {
 	char *dir_path = input + 3;
 	char cwd[MAX_LENGTH];
-
-<<<<<<< Updated upstream
-	if (_strcmp(dir_path, "-") == 0)
-	{
-		chdir(getenv("OLDPWD"));
-
-	}
-	else if (strlen(dir_path) == 0)
-	{
-		chdir(getenv("HOME"));
-	}
-	else
-	{
-		if (chdir(dir_path) == -1)
-		{
-			_puts("Error: Unable to change directory\n");
-		}
-	}
-
-	if (getcwd(cwd, sizeof(cwd)) != NULL)
-	{
-		_setenv("PWD", cwd, 1);
-	}
-
-	_setenv("OLDPWD", getenv("PWD"), 1);
-}
-=======
     if (_strcmp(dir_path, "-") == 0)
     {
         chdir(getenv("OLDPWD"));
@@ -88,6 +61,4 @@ void change_directory(char *input)
     {
         setenv("PWD", cwd, 1);
     }
-    setenv("OLDPWD", getenv("PWD"), 1);
 }
->>>>>>> Stashed changes
