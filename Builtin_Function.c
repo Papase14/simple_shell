@@ -43,6 +43,7 @@ void change_directory(char *input)
 {
 	char *dir_path = input + 3;
 	char cwd[MAX_LENGTH];
+
 	if (_strcmp(dir_path, "-") == 0)
 	{
 		chdir(getenv("OLDPWD"));
