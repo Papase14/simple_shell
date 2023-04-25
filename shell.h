@@ -17,7 +17,7 @@ extern char **environ;
 
 /*Prototypes To Use*/
 char *get_line(FILE *stream);
-char *_strtok(char *string,const char *delimiter);
+char *_strtok(char *string, const char *delimiter);
 void free_array(char **array);
 int _putchar(char c);
 void _puts(char *str);
