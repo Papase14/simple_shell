@@ -2,7 +2,7 @@
 
 /**
  * get_line - Reads input from stream
- * @Stream: stream to read from
+ * @stream: stream to read from
  * Authour: Tshupane Morake & Ntuthuko Zimu
  *
  * Return: Number of bytes read
@@ -17,21 +17,20 @@ char* get_line(FILE *stream)
 
 	if (stream == NULL)
 	{
-		return NULL;
+		return (NULL);
 	}
 	if (line == NULL)
 	{
-		return NULL;
+		return (NULL);
 	}
 
-	do
-	{
+	do {
 		c = fgetc(stream);
 		if (this_char + 1 >= buffersize)
 		{
 			buffersize = 2 * buffersize;
 
-			next_linebuffer = realloc (line, buffersize);
+			next_linebuffer = realloc(line, buffersize);
 			if (next_linebuffer == NULL)
 			{
 				free(line);

@@ -5,35 +5,35 @@
  * @delimiter: specifies set of bytes that delimit the parsed string
  * Authour: Tshupane Morake & Ntuthuko Zimu
  *
- * Return: token
+ * Return:( token
  */
 char *_strtok(char *string, const char *delimiter)
 {
-	static char *last_String = 0;
+	static char *last_String;
 	char *_token = 0;
 
 	if (string == NULL && last_String == NULL)
 	{
-        return NULL;
-    }
+		return (NULL);
+	}
 
 	if (string == NULL)
 	{
-        string = last_String;
-    }
+		string = last_String;
+	}
 
 	_token = string + strspn(string, delimiter);
 	/* If reaches the end of the string, return NULL */
 	if (*_token == '\0')
 	{
 		last_String = NULL;
-		return NULL;
+		return (NULL);
 	}
 
 	last_String = _token + strcspn(_token, delimiter);
 	if (*last_String != '\0')
 	{
-        *last_String++ = '\0';
-    }
-	return _token;
+		*last_String++ = '\0';
+	}
+	return (_token);
 }

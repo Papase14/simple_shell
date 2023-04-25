@@ -104,7 +104,7 @@ int main(void)
 		}
 		free(input);
 	}
-	return 0;
+	return (0);
 }
 
 /**
