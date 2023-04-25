@@ -62,18 +62,3 @@ void free_array(char **array)
 	}
 	free(array);
 }
-
-/**
- * my_execvp - function that execute
- * @file: The path of the file to be executed.
- * @argv: An array of strings containing the command-line arguments for the new process.
- */
-int my_execvp(const char *file, char *const argv[])
-{
-	extern char **environ;
-
-	if (execve(file, argv, environ) == -1)
-	{
-		return (-1);
-	} return (0);
-}
