@@ -33,7 +33,7 @@ void execute_command(char **args)
 
 	if (pid == 0)
 	{
-		my_execvp(args[0], args);
+		execvp(args[0], args);
 		_puts("Error: Command not found\n");
 		exit(1);
 	}
