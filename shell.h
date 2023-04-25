@@ -29,6 +29,7 @@ void print_environment_variables(void);
 void change_directory(char *input);
 int _strcmp(char *s1, char *s2);
 int _strncmp(const char *s1, const char *s2, int n);
+int my_execvp(const char *file, char *const argv[]);
 
 /* builtin functions */
 void printenv(void);

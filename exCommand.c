@@ -33,7 +33,7 @@ void execute_command(char **args)
 
 	if (pid == 0)
 	{
-		execvp(args[0], args);
+		my_execvp(args[0], args);
 		_puts("Error: Command not found\n");
 		exit(1);
 	}
@@ -61,4 +61,19 @@ void free_array(char **array)
 		free(array[i]);
 	}
 	free(array);
+}
+
+/**
+ * my_execvp - function that execute
+ * @file: The path of the file to be executed.
+ * @argv: An array of strings containing the command-line arguments for the new process.
+ */
+int my_execvp(const char *file, char *const argv[])
+{
+	extern char **environ;
+
+	if (execve(file, argv, environ) == -1)
+	{
+		return (-1);
+	} return (0);
 }
