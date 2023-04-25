@@ -17,7 +17,6 @@ int main(void)
 
 		if (!input)
 		{
-			_puts("\n");
 			break;
 		}
 		handle_exit_command(input);
