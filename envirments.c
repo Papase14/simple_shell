@@ -78,10 +78,8 @@ int _setenv(const char *name, const char *value, int overwrite)
 	char **new_environ;
 	char *temp = strcat(namecopy, "=");
 
-	free(namecopy);
+	
 	namecopy = strcat(temp,valuecopy);
-	free(valuecopy);
-	free(temp);
 
 	if (location != -1)
 	{
