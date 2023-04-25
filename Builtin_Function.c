@@ -19,6 +19,7 @@ void handle_exit_command(char *input)
 		exit(0);
 	}
 }
+
 /**
  * print_environment_variables - displays current environment
  *
@@ -33,6 +34,7 @@ void print_environment_variables(void)
 		env++;
 	}
 }
+
 /**
  * change_directory - changes directory
  * @input: input from user
@@ -41,24 +43,24 @@ void change_directory(char *input)
 {
 	char *dir_path = input + 3;
 	char cwd[MAX_LENGTH];
-    if (_strcmp(dir_path, "-") == 0)
-    {
-        chdir(getenv("OLDPWD"));
-    }
-    else if (strlen(dir_path) == 0)
-    {
-        chdir(getenv("HOME"));
-    }
-    else
-    {
-        if (chdir(dir_path) == -1)
-        {
-            _puts("Error: Unable to change directory\n");
-        }
-    }
-    
-    if (getcwd(cwd, sizeof(cwd)) != NULL)
-    {
-        setenv("PWD", cwd, 1);
-    }
+	if (_strcmp(dir_path, "-") == 0)
+	{
+		chdir(getenv("OLDPWD"));
+	}
+	else if (strlen(dir_path) == 0)
+	{
+		chdir(getenv("HOME"));
+	}
+	else
+	{
+		if (chdir(dir_path) == -1)
+		{
+			_puts("Error: Unable to change directory\n");
+		}
+	}
+
+	if (getcwd(cwd, sizeof(cwd)) != NULL)
+	{
+		setenv("PWD", cwd, 1);
+	}
 }
