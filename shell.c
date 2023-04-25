@@ -7,7 +7,7 @@
 */
 int main(void)
 {
-    char *input;
+    char **args, *input;
     int num_args;
 
     while (1)
@@ -38,7 +38,7 @@ int main(void)
         }
 
         num_args = 0;
-        char **args = parse_input(input, &num_args);
+        args = parse_input(input, &num_args);
         execute_command(args);
         free(args);
         free(input);

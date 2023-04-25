@@ -31,6 +31,8 @@ void print_environment_variables(void)
 void change_directory(char *input)
 {
     char *dir_path = input + 3;
+    char cwd[MAX_LENGTH];
+    
     if (_strcmp(dir_path, "-") == 0)
     {
         chdir(getenv("OLDPWD"));
@@ -46,7 +48,7 @@ void change_directory(char *input)
             _puts("Error: Unable to change directory\n");
         }
     }
-    char cwd[MAX_LENGTH];
+    
     if (getcwd(cwd, sizeof(cwd)) != NULL)
     {
         setenv("PWD", cwd, 1);
