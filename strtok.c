@@ -9,17 +9,20 @@
  */
 char *_strtok(char *string, const char *delimiter)
 {
-	static char *last_String = NULL;
-	char *_token = NULL;
-	
+	static char *last_String = 0;
+	char *_token = 0;
+
 	if (string == NULL && last_String == NULL)
-		return NULL;
-	
+	{
+        return NULL;
+    }
+
 	if (string == NULL)
-		string = last_String;
+	{
+        string = last_String;
+    }
 
 	_token = string + strspn(string, delimiter);
-
 	/* If reaches the end of the string, return NULL */
 	if (*_token == '\0')
 	{
@@ -28,9 +31,9 @@ char *_strtok(char *string, const char *delimiter)
 	}
 
 	last_String = _token + strcspn(_token, delimiter);
-
 	if (*last_String != '\0')
-		*last_String++ = '\0';
-
+	{
+        *last_String++ = '\0';
+    }
 	return _token;
 }

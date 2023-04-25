@@ -7,10 +7,8 @@
 */
 int main(void)
 {
-	char *input; /*Character array to hold user input*/
-	char *args[MAX_LENGTH]; /*Array to hold arguments*/
-	char *token;            /*Pointer to current token*/
-	pid_t pid;              /*Process ID variable*/
+	char *input, *args[MAX_LENGTH], *token;
+	pid_t pid;
 	int num_args, status, len;
 
 	while (1)
@@ -74,7 +72,6 @@ int main(void)
 		}
 		free(input);
 	}
-
 	return 0;
 }
 
@@ -90,7 +87,5 @@ void free_array(char **array)
 	{
 		free(array[i]);
 		i++;
-	}
-
-	free(array);
+	} free(array);
 }

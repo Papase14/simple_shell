@@ -16,10 +16,13 @@ char* get_line(FILE *stream)
 	int c;
 
 	if (stream == NULL)
+	{
 		return NULL;
-
+	}
 	if (line == NULL)
+	{
 		return NULL;
+	}
 
 	do
 	{
@@ -46,5 +49,4 @@ char* get_line(FILE *stream)
 
 	line[this_char - 1] = '\0';
 	return (line);
-
 }
