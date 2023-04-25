@@ -28,6 +28,7 @@ void _puts(char *str)
 		i++;
 		str++;
 	}
+	_putchar('\n');
 }
 
 /**
@@ -131,6 +132,5 @@ int _strncmp(const char *s1, const char *s2, int n)
 			return (c1 - c2);
 		n--;
 	}
-
 	return (c1 - c2);
 }

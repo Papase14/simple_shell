@@ -23,7 +23,6 @@ char *_strtok(char *string, const char *delimiter)
 	}
 
 	_token = string + strspn(string, delimiter);
-	/* If reaches the end of the string, return NULL */
 	if (*_token == '\0')
 	{
 		last_String = NULL;
