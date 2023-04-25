@@ -12,11 +12,12 @@ int main(void)
 
 	while (1)
 	{
-		puts("cisfun$ ");
+		_puts("cisfun$ ");
 		input = get_line(stdin);
 
 		if (!input)
 		{
+			_puts("\n");
 			break;
 		}
 		handle_exit_command(input);
