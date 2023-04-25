@@ -8,7 +8,7 @@
 #include <unistd.h>     /*Unix standard functions*/
 #include <sys/types.h>  /*Data types used in system calls*/
 #include <sys/wait.h>   /*Wait for process termination function*/
-
+#include <sys/stat.h>
 #define MAX_LENGTH 1024 /*Maximum length of input string*/
 
 /*Environmental variables*/
@@ -25,6 +25,8 @@ int _setenv(const char *name, const char *value, int overwrite);
 int _unsetenv(const char *name);
 int _enviromentLoc(const char *name);
 char *get_env(const char *name);
+
+
 
 #endif
 

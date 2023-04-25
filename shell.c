@@ -46,6 +46,38 @@ int main(void)
 			} free(input);
 			continue;
 		}
+		else if (strncmp(input, "cd ", 3) == 0) /* check if user entered "cd" command*/
+        {
+            /* get the directory path to change to */
+            char *dir_path = input + 3;
+            if (strcmp(dir_path, "-") == 0) /* check if directory is '-' */
+            {
+                /* change to previous directory */
+                chdir(getenv("OLDPWD"));
+            }
+            else if (strlen(dir_path) == 0) /* check if no directory path is given */
+            {
+                /* change to home directory */
+                chdir(getenv("HOME"));
+            }
+            else /* change to specified directory path */
+            {
+                if (chdir(dir_path) == -1)
+                {
+                    printf("Error: Unable to change directory\n");
+                }
+            }
+            /* update PWD environment variable */
+            char cwd[MAX_LENGTH];
+            if (getcwd(cwd, sizeof(cwd)) != NULL)
+            {
+                setenv("PWD", cwd, 1);
+            }
+            /* update OLDPWD environment variable */
+            setenv("OLDPWD", getenv("PWD"), 1);
+            free(input);
+            continue;
+        }
 
 		num_args = 0; /*Initialize number of arguments to 0*/
 		token = _strtok(input, " "); /*Get first token from input string*/
