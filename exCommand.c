@@ -36,11 +36,13 @@ void execute_command(char **args)
 		execvp(args[0], args);
 		_puts("Error: Command not found\n");
 		exit(1);
+		fflush(stdout);
 	}
 	else if (pid < 0)
 	{
 		_puts("Fork failed\n");
 		exit(1);
+		fflush(stdout);
 	}
 	else
 	{
